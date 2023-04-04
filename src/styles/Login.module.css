@@ -1,0 +1,19 @@
+.loginMain {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.loginContainer {
+  height: 102%;
+}
+
+.imageContainer {
+  background: linear-gradient(316.73deg, #1cf1cf 0%, #0fcf9b 90%);
+  height: 100%;
+}
+
+.imageContainer img {
+  width: 60%;
+}
