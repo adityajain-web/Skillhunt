@@ -16,7 +16,7 @@ const Home = () => {
                                         <Grid container spacing={2}>
                                             <Grid item xs={12} sm={6}>
                                                 <Typography variant='body1'>Seeker</Typography>
-                                                <Button variant="contained" color="primary" onClick={() => navigate('/auth/login')}>
+                                                <Button variant="contained" color="primary" onClick={() => navigate('/auth/login/')}>
                                                     Get Hire
                                                 </Button>
                                             </Grid>

@@ -3,6 +3,7 @@
 
 :root {
   --h1-font-size: 2rem;
+  --h1-mob-font-size: 1.5rem;
   --h2-font-size: 1.5rem;
   --h3-font-size: 1.17rem;
   --h4-font-size: 1rem;
@@ -44,6 +45,7 @@ h4,
 h5,
 h6 {
   font-weight: var(--heading-font-weight) !important;
+  color: var(--teritary-color);
 }
 
 h1 {
@@ -93,4 +95,39 @@ ul {
 
 .text--secondary {
   color: var(--secondary-color) !important;
+}
+
+#authFormContainer {
+  width: 90%;
+}
+
+#authFormContainer form input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #eee;
+  border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+#authFormContainer form input:focus {
+  border: 2px solid;
+}
+
+.submitBtn {
+  background-color: var(--primary-color) !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.submitBtn:hover {
+  background-color: #0785df !important;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: var(--h1-mob-font-size) !important;
+  }
 }
