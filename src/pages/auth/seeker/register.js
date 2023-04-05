@@ -98,7 +98,7 @@ const Register = () => {
                                             </form>
                                             <Box mt={2} className="d-flex flex-column align-items-center">
                                                 <Button variant='text'>Forget Password</Button>
-                                                <Button variant='text' onClick={() => navigate('/auth/register/')}>Already have an account.</Button>
+                                                <Button variant='text' onClick={() => navigate('/auth/login/')}>Already have an account.</Button>
                                             </Box>
                                         </Box>
                                     </CardContent>
