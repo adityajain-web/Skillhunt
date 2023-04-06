@@ -130,4 +130,8 @@ ul {
   h1 {
     font-size: var(--h1-mob-font-size) !important;
   }
+
+  #authFormContainer {
+    padding: 5rem 0rem !important;
+  }
 }

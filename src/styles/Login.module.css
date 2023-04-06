@@ -22,6 +22,7 @@
 @media only screen and (max-width: 600px) {
   .formGrid {
     background: linear-gradient(316.73deg, #1cf1cf 0%, #0fcf9b 90%);
+    height: auto;
   }
 
   .regMain {
@@ -29,7 +30,11 @@
     overflow-y: auto !important;
   }
 
-  .loginContainer {
+  .regMain .loginContainer {
     height: auto !important;
+  }
+
+  .loginMain .loginContainer {
+    height: 103%;
   }
 }

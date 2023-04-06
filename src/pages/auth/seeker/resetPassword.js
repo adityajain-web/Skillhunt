@@ -9,7 +9,7 @@ import Auth from '../../../images/auth.webp'
 import 'react-toastify/dist/ReactToastify.css';
 import Styles from '../../../styles/Login.module.css'
 
-const Login = () => {
+const ResetPassword = () => {
     const navigate = useNavigate()
 
     const schema = yup.object().shape({
@@ -40,7 +40,8 @@ const Login = () => {
                                 </Box>
                                 <Card style={{ width: "100%" }}>
                                     <CardContent className='py-5 px-4'>
-                                        <Typography variant='h2' align='center'>Sign in to Skillhunt</Typography>
+                                        <Typography variant='h2' align='center' gutterBottom>Skillhunt</Typography>
+                                        <Typography variant='h4' align='center'>Reset Password</Typography>
                                         <Box mt={2}>
                                             <form onSubmit={handleSubmit(onSubmit)}>
                                                 <Box mb={2}>
@@ -86,4 +87,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ResetPassword

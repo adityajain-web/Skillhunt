@@ -21,15 +21,53 @@ const Register = () => {
         cPass: yup.string().oneOf([yup.ref('password'), null], 'Confirm password must be same as password.').required('Confirm password is required.')
     })
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
         mode: 'onBlur',
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
-        console.log(data)
-        toast.success('Sign up successfully!');
+    const onSubmit = async (data) => {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(data),
+            redirect: 'follow'
+        };
+
+
+        await fetch("http://127.0.0.1:8000/seeker-registration", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                if (result && result.code === 11000) {
+                    if (result.keyValue && result.keyValue.email) {
+                        toast.error(`Email: ${result.keyValue.email} is already exist.`)
+                    } else if (result.keyValue && result.keyValue.phone) {
+                        toast.error(`Phone number: ${result.keyValue.phone} is already exist.`)
+                    }
+                } else if (result && result.errors) {
+                    if (result.errors && result.errors.firstName && result.errors.firstName.message) {
+                        toast.error(result.errors.firstName.message)
+                    } else if (result.errors && result.errors.lastName && result.errors.lastName.message) {
+                        toast.error(result.errors.lastName.message)
+                    } else if (result.errors && result.errors.email && result.errors.email.message) {
+                        toast.error(result.errors.email.message)
+                    } else if (result.errors && result.errors.phone && result.errors.phone.message) {
+                        toast.error(result.errors.phone.message)
+                    } else if (result.errors && result.errors.password && result.errors.password.message) {
+                        toast.error(result.errors.password.message)
+                    }
+                } else {
+                    toast.success('Sign up successfully!')
+                    reset()
+                }
+            })
+            .catch(error => console.log('error', error));
     }
+
+
     return (
         <>
             <main className={`${Styles.regMain}`}>
@@ -97,8 +135,7 @@ const Register = () => {
                                                 </Box>
                                             </form>
                                             <Box mt={2} className="d-flex flex-column align-items-center">
-                                                <Button variant='text'>Forget Password</Button>
-                                                <Button variant='text' onClick={() => navigate('/auth/register/')}>Already have an account.</Button>
+                                                <Button variant='text' onClick={() => navigate('/auth/login/')}>Already have an account.</Button>
                                             </Box>
                                         </Box>
                                     </CardContent>

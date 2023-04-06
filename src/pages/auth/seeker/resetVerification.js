@@ -9,12 +9,11 @@ import Auth from '../../../images/auth.webp'
 import 'react-toastify/dist/ReactToastify.css';
 import Styles from '../../../styles/Login.module.css'
 
-const Login = () => {
+const ResetVerification = () => {
     const navigate = useNavigate()
 
     const schema = yup.object().shape({
-        email: yup.string().email('Invalid email.').required('Email is required.'),
-        password: yup.string().required('Password is required.').min(8, 'Password must be at least 8 character.')
+        phone: yup.string().required('Phone number is required.').matches(/^\d+$/, 'Invalid phone number.').min(10, 'Invalid phone number.').max(10, 'Invalid phone number.'),
     })
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -26,7 +25,6 @@ const Login = () => {
         console.log(data)
         toast.success('Sign in successfully!');
     }
-
     return (
         <>
             <main className={`${Styles.loginMain}`}>
@@ -40,31 +38,20 @@ const Login = () => {
                                 </Box>
                                 <Card style={{ width: "100%" }}>
                                     <CardContent className='py-5 px-4'>
-                                        <Typography variant='h2' align='center'>Sign in to Skillhunt</Typography>
+                                        <Typography variant='h2' align='center'>Skillhunt</Typography>
                                         <Box mt={2}>
                                             <form onSubmit={handleSubmit(onSubmit)}>
                                                 <Box mb={2}>
-                                                    <label htmlFor='email'>Email</label>
-                                                    <input type='email' id='email' {...register('email')} />
+                                                    <label htmlFor='phone'>Enter your register phone number</label>
+                                                    <input type='phone' id='phone' {...register('phone')} />
                                                     {
-                                                        errors && errors.email ? <Typography className='text-danger'>{errors.email.message}</Typography> : null
-                                                    }
-                                                </Box>
-                                                <Box mb={2}>
-                                                    <label htmlFor='password'>Password</label>
-                                                    <input type='password' id='password' {...register('password')} />
-                                                    {
-                                                        errors && errors.password && errors.password.message ? <Typography className='text-danger'>{errors.password.message}</Typography> : null
+                                                        errors && errors.phone && errors.phone.message ? <Typography className='text-danger'>{errors.phone.message}</Typography> : null
                                                     }
                                                 </Box>
                                                 <Box mt={2}>
-                                                    <Button type="submit" className="submitBtn" variant="contained">Sign In</Button>
+                                                    <Button type="submit" className="submitBtn" variant="contained">Send OTP</Button>
                                                 </Box>
                                             </form>
-                                            <Box mt={2} className="d-flex flex-column flex-md-row justify-content-between">
-                                                <Button variant='text' onClick={() => navigate('/auth/reset-verification/')}>Forget Password</Button>
-                                                <Button variant='text' onClick={() => navigate('/auth/register/')}>Need an account?</Button>
-                                            </Box>
                                         </Box>
                                     </CardContent>
                                 </Card>
@@ -86,4 +73,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ResetVerification
