@@ -22,9 +22,28 @@ const Login = () => {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = (data) => {
-        console.log(data)
-        toast.success('Sign in successfully!');
+    const onSubmit = async (data) => {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        let requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: JSON.stringify(data),
+            redirect: 'follow'
+        };
+
+        await fetch("http://127.0.0.1:8000/seeker-login", requestOptions)
+            .then(response => response.json())
+            .then(result => {
+                if (result.error) {
+                    toast.error(result.error)
+                } else {
+                    navigate('/seeker/create-profile/')
+                    toast.success('Login successfully.')
+                }
+            })
+            .catch(error => console.log('error', error));
     }
 
     return (

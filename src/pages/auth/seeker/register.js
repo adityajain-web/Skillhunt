@@ -34,11 +34,12 @@ const Register = () => {
             method: 'POST',
             headers: myHeaders,
             body: JSON.stringify(data),
-            redirect: 'follow'
+            redirect: 'follow',
+            credentials: 'include',
         };
 
 
-        await fetch("http://127.0.0.1:8000/seeker-registration", requestOptions)
+        await fetch("/seeker-registration", requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result && result.code === 11000) {
@@ -59,8 +60,11 @@ const Register = () => {
                     } else if (result.errors && result.errors.password && result.errors.password.message) {
                         toast.error(result.errors.password.message)
                     }
+                } else if (Object.keys(result).length === 0) {
+                    toast.error('Something went wrong!')
                 } else {
-                    toast.success('Sign up successfully!')
+                    navigate('/seeker/create-profile/')
+                    toast.success('Sign up successfully!');
                     reset()
                 }
             })

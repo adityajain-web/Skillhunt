@@ -1,0 +1,1 @@
+export { default as SeekerHeader } from './seeker/dashboard/layout/header';
