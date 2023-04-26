@@ -126,6 +126,33 @@ ul {
   background-color: #0785df !important;
 }
 
+.uploader {
+  height: 300px;
+  width: 100%;
+  background-image: url("../images/uploadBg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.react-image-file-to-base64 {
+  height: 100%;
+  width: 100%;
+}
+
+.react-image-file-to-base64 button {
+  height: 100%;
+  width: 100%;
+  box-shadow: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.react-image-file-to-base64 button:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
 @media only screen and (max-width: 600px) {
   h1 {
     font-size: var(--h1-mob-font-size) !important;

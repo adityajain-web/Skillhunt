@@ -106,7 +106,7 @@ const Header = ({ setTab }) => {
                         { id: 'seeker-dash-menu-5', name: 'Project', icon: <RocketLaunch /> },
                         { id: 'seeker-dash-menu-6', name: 'Objective', icon: <EmojiObjects /> },
                         { id: 'seeker-dash-menu-8', name: 'Resume', icon: <Article /> },
-                        ].map(item => <ListItem components={Button} key={item.id} onClick={() => setTab(item.name)}>
+                        ].map(item => <ListItem components={Button} key={item.id} onClick={() => setTab(item.name)} sx={{ cursor: "pointer" }}>
                             <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center', }}>
                                 {item.icon}
                             </ListItemIcon>
@@ -121,7 +121,7 @@ const Header = ({ setTab }) => {
                         { id: 'seeker-dash-menu-10', name: 'Applied Jobs', icon: <IosShare /> },
                         { id: 'seeker-dash-menu-11', name: 'Saved Jobs', icon: <Save /> },
                         { id: 'seeker-dash-menu-12', name: 'Messages', icon: <Email /> },
-                        ].map(item => <ListItem components={Button} key={item.id} onClick={() => setTab(item.name)}>
+                        ].map(item => <ListItem components={Button} key={item.id} onClick={() => setTab(item.name)} sx={{ cursor: "pointer" }}>
                             <ListItemIcon sx={{ minWidth: 0, mr: open ? 3 : 'auto', justifyContent: 'center', }}>
                                 {item.icon}
                             </ListItemIcon>

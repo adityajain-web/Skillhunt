@@ -39,7 +39,7 @@ const Login = () => {
                 if (result.error) {
                     toast.error(result.error)
                 } else {
-                    navigate('/seeker/create-profile/')
+                    navigate('/seeker/dashboard/')
                     toast.success('Login successfully.')
                 }
             })

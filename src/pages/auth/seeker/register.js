@@ -63,7 +63,7 @@ const Register = () => {
                 } else if (Object.keys(result).length === 0) {
                     toast.error('Something went wrong!')
                 } else {
-                    navigate('/seeker/create-profile/')
+                    navigate('/seeker/dashboard/')
                     toast.success('Sign up successfully!');
                     reset()
                 }
